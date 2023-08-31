@@ -1,18 +1,20 @@
 type CardProps = {
-  data: {
+  values: {
     name: string;
-    followers: string;
-    new: string;
-    pageViews: string;
-    pageViewsPCT: string;
-    likes: string;
-    likesPCT: string;
+    followers: number;
+    new: number;
+    pageViews: number;
+    pageViewsPCT: number;
+    likes: number;
+    likesPCT: number;
   };
 };
-const Card: React.FunctionComponent<CardProps> = ({ data }) => {
+
+const Card: React.FunctionComponent<CardProps> = ({ values }) => {
   return (
     <div>
-      <h2>data[name]</h2>
+      <h2>{values.name}</h2>
+      <span>{values.followers}</span>
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas
         accusamus quae incidunt voluptatum maxime sapiente impedit aliquam ab

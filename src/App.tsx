@@ -1,31 +1,92 @@
+import { useEffect, useState } from "react";
 import Card from "./components/Card";
 
-const social: string[] = ["facebook", "twitter", "instagram", "youtube"];
+type socialData = {
+  name: string;
+  followers: number;
+  new: number;
+  pageViews: number;
+  pageViewsPCT: number;
+  likes: number;
+  likesPCT: number;
+};
 
-/* useEffect(() => {
-  fetch("data.json").then().then();
-}, []); */
+type dataProp = {
+  facebook: socialData;
+  twitter: socialData;
+  instagram: socialData;
+  youtube: socialData;
+};
+const socialMediaKeys: (keyof dataProp)[] = [
+  "facebook",
+  "twitter",
+  "instagram",
+  "youtube",
+];
+
+const generateInitialData = (): dataProp => {
+  const initialSocialData: socialData = {
+    name: "",
+    followers: 0,
+    new: 0,
+    pageViews: 0,
+    pageViewsPCT: 0,
+    likes: 0,
+    likesPCT: 0,
+  };
+
+  return {
+    facebook: { ...initialSocialData },
+    twitter: { ...initialSocialData },
+    instagram: { ...initialSocialData },
+    youtube: { ...initialSocialData },
+  };
+};
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [data, setData] = useState<dataProp>(generateInitialData());
+
+  function handleThemeClick(): void {
+    setDarkMode((prev) => !prev);
+  }
+
+  useEffect(() => {
+    fetch("data.json")
+      .then((res) => res.json())
+      .then((info) => setData(info));
+  }, []);
+
+  console.log(data);
+
   return (
-    <main>
+    <div className={darkMode ? "dark-mode" : "light-mode"}>
       <header>
         <div>
           <h1>Social Media Dashboard</h1>
-          <span>Total Followers: XXXXXX</span>
-        </div>
-        <div>
-          <span>Dark Mode</span>
-          <button>XXXX</button>
+          <span className="secondary-heading">Total Followers: XXXXXX</span>
         </div>
       </header>
-      <section title="main" className="main-section">
-        {/* {social.map((elem) => (
-          <Card type={elem} data={data[elem]}></Card>
-        ))} */}
-      </section>
-      <section title="detail" className="detail-section"></section>
-    </main>
+      <main>
+        <section className="theme-section">
+          <span className="secondary-heading">Dark Mode</span>
+          <button onClick={handleThemeClick} className="toggle-button">
+            <div
+              className="toggle-circle"
+              style={{
+                transform: darkMode ? "translateX(30px)" : "translateX(0)",
+              }}
+            />
+          </button>
+        </section>
+        <section title="summary" className="summary-section">
+          {socialMediaKeys.map((platform, index) => (
+            <Card values={data[platform]}></Card>
+          ))}
+        </section>
+        <section title="detail" className="detail-section"></section>
+      </main>
+    </div>
   );
 }
 
