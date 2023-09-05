@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./components/Card";
+import CardToday from "./components/CardToday";
 
 type socialData = {
   name: string;
@@ -81,10 +82,23 @@ function App() {
         </section>
         <section title="summary" className="summary-section">
           {socialMediaKeys.map((platform, index) => (
-            <Card values={data[platform]}></Card>
+            <Card
+              key={index}
+              platform={platform}
+              values={data[platform]}
+            ></Card>
           ))}
         </section>
-        <section title="detail" className="detail-section"></section>
+        <h1>Overview - Today</h1>
+        <section title="detail" className="detail-section">
+          {socialMediaKeys.map((platform, index) => (
+            <CardToday
+              key={index}
+              platform={platform}
+              values={data[platform]}
+            ></CardToday>
+          ))}
+        </section>
       </main>
     </div>
   );

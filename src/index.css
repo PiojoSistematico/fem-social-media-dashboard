@@ -218,6 +218,103 @@ h1 {
   display: none;
 }
 
+.summary-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-400);
+  padding: var(--size-400) 0 var(--size-600) 0;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-400);
+  align-items: center;
+  background-color: var(--clr-background-card);
+  border-radius: var(--size-100);
+  padding: var(--size-600);
+}
+
+.facebook {
+  border-top: 3px solid var(--clr-primary-facebook);
+}
+
+.twitter {
+  border-top: 3px solid var(--clr-primary-twitter);
+}
+
+.instagram {
+  border: 3px solid;
+  border-image-slice: 1;
+  border-width: 3px;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-image-source: linear-gradient(
+    90deg,
+    var(--clr-primary-instagram1),
+    var(--clr-primary-instagram2)
+  );
+}
+
+.youtube {
+  border-top: 3px solid var(--clr-primary-youTube);
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-200);
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--size-200);
+  align-items: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.username {
+  font-weight: var(--font-weight-bold);
+}
+
+.big-number {
+  font-size: var(--font-size-1000);
+  font-weight: var(--font-weight-bold);
+  color: var(--clr-text-primary);
+}
+
+.increase {
+  color: var(--clr-primary-lime-green);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-300);
+}
+.decrease {
+  color: var(--clr-primary-bright-red);
+  font-weight: var(--font-weight-bold);
+}
+
+.detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-400);
+  padding: var(--size-400) 0 var(--size-400) 0;
+}
+
+.flex-row-between {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 /* https://codepen.io/sosuke/pen/Pjoqqp */
 /* .red-dot {
   width: 0.5rem;
@@ -234,4 +331,15 @@ h1 {
   .mobile {
     display: none;
   }
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-400);
+  align-items: center;
+  height: fit-content;
+  background-color: var(--clr-background-card);
+  border-radius: var(--size-100);
+  padding: var(--size-600);
 }
