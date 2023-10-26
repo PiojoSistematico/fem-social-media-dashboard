@@ -1,0 +1,38 @@
+{
+  "facebook": {
+    "name": "@nathanf",
+    "followers": "1987",
+    "new": "12",
+    "pageViews": "87",
+    "pageViewsPCT": "3",
+    "likes": "52",
+    "likesPCT": "-2"
+  },
+  "twitter": {
+    "name": "@nathanf",
+    "followers": "1044",
+    "new": "99",
+    "pageViews": "117",
+    "pageViewsPCT": "303",
+    "likes": "507",
+    "likesPCT": "553"
+  },
+  "instagram": {
+    "name": "@realnathanf",
+    "followers": "11k",
+    "new": "1099",
+    "pageViews": "5462",
+    "pageViewsPCT": "2257",
+    "likes": "52k",
+    "likesPCT": "1375"
+  },
+  "youtube": {
+    "name": "Nathan F.",
+    "followers": "8239",
+    "new": "-144",
+    "pageViews": "107",
+    "pageViewsPCT": "-19",
+    "likes": "1407",
+    "likesPCT": "-12"
+  }
+}
