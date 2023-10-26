@@ -155,7 +155,6 @@ svg {
 }
 
 header {
-  border-bottom: 1px solid var(--clr-text-primary);
   display: flex;
   flex-direction: column;
   gap: var(--size-400);
@@ -177,6 +176,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top: 1px solid var(--clr-text-primary);
 }
 
 /* Toggle Button */
@@ -200,7 +200,6 @@ h1 {
   height: 30px;
   border-radius: 15px;
   cursor: pointer;
-  /* transition: var(--clr-text-secondary) 0.3s ease; */
 }
 
 .toggle-circle {
@@ -306,6 +305,9 @@ article {
   gap: var(--size-400);
   padding: var(--size-400) 0 var(--size-400) 0;
 }
+.detail {
+  padding: var(--size-400);
+}
 
 .flex-row-between {
   display: flex;
@@ -331,15 +333,38 @@ article {
   .mobile {
     display: none;
   }
-}
+  header {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-400);
+    padding-bottom: var(--size-400);
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.detail {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-400);
-  align-items: center;
-  height: fit-content;
-  background-color: var(--clr-background-card);
-  border-radius: var(--size-100);
-  padding: var(--size-600);
+  .theme-section {
+    border-top: none;
+  }
+
+  .theme-section {
+    padding: 0;
+    display: flex;
+    justify-content: baseline;
+    gap: var(--size-400);
+  }
+
+  .summary-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .detail-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .dark-mode,
+  .light-mode {
+    height: 100vh;
+    height: 100dvh;
+  }
 }

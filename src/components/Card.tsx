@@ -1,15 +1,12 @@
-import facebook from "../assets/images/icon-facebook.svg";
-import instagram from "../assets/images/icon-instagram.svg";
-import twitter from "../assets/images/icon-twitter.svg";
-import youtube from "../assets/images/icon-youtube.svg";
 import iconUp from "../assets/images/icon-up.svg";
 import iconDown from "../assets/images/icon-down.svg";
+import CustomImage from "./CustomImage";
 
 type CardProps = {
   platform: string;
   values: {
     name: string;
-    followers: number;
+    followers: string;
     new: number;
     pageViews: number;
     pageViewsPCT: number;
@@ -22,7 +19,7 @@ const Card: React.FunctionComponent<CardProps> = ({ platform, values }) => {
   return (
     <article className={`article ${platform}`}>
       <div className="flex-row">
-        <img src={facebook} alt="social-logo" />
+        <CustomImage platform={platform}></CustomImage>
         <h2 className="username">{values.name}</h2>
       </div>
       <div className="flex-col">

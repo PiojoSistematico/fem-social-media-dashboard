@@ -1,15 +1,12 @@
-import facebook from "../assets/images/icon-facebook.svg";
-import instagram from "../assets/images/icon-instagram.svg";
-import twitter from "../assets/images/icon-twitter.svg";
-import youtube from "../assets/images/icon-youtube.svg";
 import iconUp from "../assets/images/icon-up.svg";
 import iconDown from "../assets/images/icon-down.svg";
+import CustomImage from "./CustomImage";
 
 type CardTodayProps = {
   platform: string;
   values: {
     name: string;
-    followers: number;
+    followers: string;
     new: number;
     pageViews: number;
     pageViewsPCT: number;
@@ -33,8 +30,8 @@ const CardToday: React.FunctionComponent<CardTodayProps> = ({
     <>
       <article className="detail">
         <div className="flex-row-between">
-          <span>{dictionary[platform][0]}</span>
-          <img src={facebook} alt="social-logo" />
+          <span>{dictionary[platform as keyof typeof dictionary][0]}</span>
+          <CustomImage platform={platform}></CustomImage>
         </div>
         <div className="flex-row-between">
           <span className="big-number">{values.pageViews}</span>
@@ -55,8 +52,8 @@ const CardToday: React.FunctionComponent<CardTodayProps> = ({
       </article>
       <article className="detail">
         <div className="flex-row-between">
-          <span>{dictionary[platform][1]}</span>
-          <img src={facebook} alt="social-logo" />
+          <span>{dictionary[platform as keyof typeof dictionary][1]}</span>
+          <CustomImage platform={platform}></CustomImage>
         </div>
         <div className="flex-row-between">
           <span className="big-number">{values.likes}</span>

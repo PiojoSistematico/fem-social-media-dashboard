@@ -4,7 +4,7 @@ import CardToday from "./components/CardToday";
 
 type socialData = {
   name: string;
-  followers: number;
+  followers: string;
   new: number;
   pageViews: number;
   pageViewsPCT: number;
@@ -13,10 +13,7 @@ type socialData = {
 };
 
 type dataProp = {
-  facebook: socialData;
-  twitter: socialData;
-  instagram: socialData;
-  youtube: socialData;
+  [key: string]: socialData;
 };
 const socialMediaKeys: (keyof dataProp)[] = [
   "facebook",
@@ -28,7 +25,7 @@ const socialMediaKeys: (keyof dataProp)[] = [
 const generateInitialData = (): dataProp => {
   const initialSocialData: socialData = {
     name: "",
-    followers: 0,
+    followers: "0",
     new: 0,
     pageViews: 0,
     pageViewsPCT: 0,
@@ -58,17 +55,22 @@ function App() {
       .then((info) => setData(info));
   }, []);
 
-  console.log(data);
+  const followers = Object.keys(data).reduce(
+    (sum, elem) =>
+      sum +
+      parseInt(data[elem].followers.toString().replace(/[^0-9]/g, ""), 10),
+    0
+  );
 
   return (
     <div className={darkMode ? "dark-mode" : "light-mode"}>
       <header>
         <div>
           <h1>Social Media Dashboard</h1>
-          <span className="secondary-heading">Total Followers: XXXXXX</span>
+          <span className="secondary-heading">
+            Total Followers: {followers}
+          </span>
         </div>
-      </header>
-      <main>
         <section className="theme-section">
           <span className="secondary-heading">Dark Mode</span>
           <button onClick={handleThemeClick} className="toggle-button">
@@ -80,11 +82,13 @@ function App() {
             />
           </button>
         </section>
+      </header>
+      <main>
         <section title="summary" className="summary-section">
           {socialMediaKeys.map((platform, index) => (
             <Card
               key={index}
-              platform={platform}
+              platform={platform as string}
               values={data[platform]}
             ></Card>
           ))}
@@ -94,7 +98,7 @@ function App() {
           {socialMediaKeys.map((platform, index) => (
             <CardToday
               key={index}
-              platform={platform}
+              platform={platform as string}
               values={data[platform]}
             ></CardToday>
           ))}
